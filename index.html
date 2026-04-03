@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Алёна Спирихина · Психолог-консультант</title>
+  <meta name="description" content="Бережная психологическая помощь в интегративном подходе. Работа с тревогой, выгоранием, кризисами и самооценкой. Очно в Чистополе и онлайн.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --text: #2d3734;
+      --text-muted: #6b7c75;
+      --accent: #8a9c8f;
+      --accent-soft: #e8ede9;
+      --rose: #d4a5b3;
+      --rose-soft: #f5ebef;
+      --shadow: 0 12px 36px rgba(45, 55, 52, 0.06);
+      --radius: 16px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 32px; border-radius: 50px; font-weight: 500;
+      cursor: pointer; border: none; transition: var(--transition);
+      font-family: inherit; font-size: 1rem; text-decoration: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #76897b; transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent-soft); }
+    .section { padding: 90px 0; position: relative; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 600;
+      text-align: center; margin-bottom: 16px; color: var(--text); line-height: 1.2;
+    }    .section-sub { text-align: center; color: var(--text-muted); max-width: 680px; margin: 0 auto 48px; font-size: 1.05rem; }
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(250, 248, 245, 0.85); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(138, 156, 143, 0.15);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; position: relative; padding-bottom: 4px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition); }
+    .nav-links a:hover::after { width: 100%; }
+    .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); }
+    .hero { min-height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 100px; background: radial-gradient(circle at 20% 30%, #f0f4f1 0%, transparent 55%), radial-gradient(circle at 85% 80%, #f5ebef 0%, transparent 50%); }
+    .hero-content h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: 4.2rem; line-height: 1.1; margin-bottom: 20px;
+      color: var(--text);
+    }
+    .hero-content h1 span { color: var(--accent); }
+    .hero-content p { font-size: 1.15rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 36px; }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: center; }
+    .about-image {
+      width: 100%; aspect-ratio: 4/5; border-radius: var(--radius);
+      background-color: #e8ede9; /* Цвет фона если фото нет */
+      background-size: cover;
+      background-position: center top; /* Чтобы лицо было в кадре */
+      background-repeat: no-repeat;
+      display: flex; align-items: center; justify-content: center; 
+      min-height: 400px;
+    }
+    .about-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; margin-bottom: 20px; }
+    .about-text p { color: var(--text-muted); margin-bottom: 16px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .badge { background: var(--accent-soft); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .service-card {
+      background: var(--surface); padding: 32px 24px; border-radius: var(--radius);
+      border: 1px solid rgba(138, 156, 143, 0.2); transition: var(--transition);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--accent); }
+    .service-icon { width: 44px; height: 44px; background: var(--rose-soft); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--rose); font-size: 1.4rem; }
+    .service-card h3 { font-size: 1.2rem; font-weight: 600; }
+    .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .principles { background: linear-gradient(to bottom, var(--bg), #f4f7f5); }
+    .principles-box {
+      background: var(--surface); max-width: 850px; margin: 0 auto; padding: 40px; border-radius: var(--radius);
+      box-shadow: var(--shadow); position: relative; overflow: hidden;    }
+    .principles-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--accent), var(--rose)); }
+    .principles-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 24px; }
+    .principle { text-align: center; }
+    .principle h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+    .principle p { color: var(--text-muted); font-size: 0.9rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .contact-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 16px; }
+    .contact-info p { color: var(--text-muted); margin-bottom: 28px; }
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--surface);
+      border-radius: 12px; text-decoration: none; color: var(--text); border: 1px solid rgba(138, 156, 143, 0.15);
+      transition: var(--transition);
+    }
+    .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+    .contact-link .icon { width: 36px; height: 36px; background: var(--accent-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.1rem; }
+    .contact-form { background: var(--surface); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 12px 16px; border: 1px solid #d1d9d4; border-radius: 10px;
+      font-family: inherit; font-size: 1rem; transition: var(--transition); background: #fdfdfd;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .consent-group { display: flex; align-items: flex-start; gap: 10px; margin: 16px 0 20px; font-size: 0.85rem; color: var(--text-muted); }
+    .consent-group input { margin-top: 4px; }
+    footer { background: #26302b; color: #a8b5ad; padding: 48px 0 28px; text-align: center; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: #fff; margin-bottom: 12px; }
+    .footer-note { max-width: 500px; margin: 0 auto 20px; font-size: 0.9rem; }
+    .copyright { font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; margin-top: 24px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .hero-content h1 { font-size: 3rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-image { max-width: 320px; margin: 0 auto; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--surface); flex-direction: column; padding: 24px; box-shadow: var(--shadow); border-top: 1px solid rgba(138,156,143,0.2); gap: 16px; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .section { padding: 70px 0; }
+      .section-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">      <a href="#" class="brand">Алёна Спирихина</a>
+      <button class="menu-btn" aria-label="Меню">☰</button>
+      <ul class="nav-links">
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#services">Направления</a></li>
+        <li><a href="#principles">Принципы</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1 class="reveal">Пространство, где можно <span>быть собой</span></h1>
+      <p class="reveal">Бережная психологическая помощь в интегративном подходе. Работаю со взрослыми мужчинами и женщинами очно в Чистополе и онлайн по всей России.</p>
+      <div class="hero-actions reveal">
+        <a href="#contact" class="btn btn-primary">Записаться на консультацию</a>
+        <a href="#services" class="btn btn-outline">Узнать подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <!-- ВОТ ТУТ МЫ ПОДКЛЮЧАЕМ ФОТО -->
+      <div class="about-image reveal" style="background-image: url('alena-photo.jpg');"></div>
+      <div class="about-text reveal">
+        <h2>Обо мне</h2>
+        <p>Меня зовут Алёна. Я психолог-консультант, работаю в интегративном подходе. Моя задача — создать безопасное пространство, где вы сможете исследовать свои чувства, найти опору внутри себя и двигаться вперёд в комфортном темпе.</p>
+        <p>Я работаю как в формате краткосрочной терапии (1–2 сессии для решения конкретного запроса), так и в длительной работе. Прохожу личную терапию, строго соблюдаю этический кодекс и принцип конфиденциальности.</p>
+        <div class="badges">
+          <span class="badge">Интегративный подход</span>
+          <span class="badge">МУИП, 2025</span>
+          <span class="badge">Очно / Онлайн</span>
+          <span class="badge">Этический кодекс</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">С чем я работаю</h2>
+      <p class="section-sub reveal">Каждый запрос уникален. Я подбираю методы индивидуально, опираясь на вашу ситуацию и ресурсы.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🌧️</div>
+          <h3>Тревога и стресс</h3>
+          <p>Помощь при депрессивных и тревожных состояниях, панических реакциях, хроническом напряжении и эмоциональном истощении.</p>
+        </div>        <div class="service-card reveal">
+          <div class="service-icon">🔥</div>
+          <h3>Выгорание и кризисы</h3>
+          <p>Профессиональное выгорание, возрастные кризисы, сепарация от родителей, поиск смыслов и самоопределение.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🛡️</div>
+          <h3>Границы и самооценка</h3>
+          <p>Выстраивание личных границ, работа с перфекционизмом, прокрастинацией, неуверенностью и синдромом самозванца.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🧭</div>
+          <h3>Диагностика и самопознание</h3>
+          <p>Психодиагностика (тестирование), помощь в понимании своих паттернов, сильных сторон и зон роста.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles" class="section principles">
+    <div class="container">
+      <h2 class="section-title reveal">Мои принципы работы</h2>
+      <div class="principles-box reveal">
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 28px; font-size: 1.05rem;">«Не навреди» — главный принцип, которого я придерживаюсь. Я и мои коллеги «врачуем душу», и безопасность клиента стоит на первом месте.</p>
+        <div class="principles-list">
+          <div class="principle">
+            <h4>🤝 Контакт и близость с собой</h4>
+            <p>Фундамент терапии — возвращение к себе, своим истинным потребностям и ценностям.</p>
+          </div>
+          <div class="principle">
+            <h4>🔒 Конфиденциальность</h4>
+            <p>Всё, что происходит на сессии, остаётся между нами. Полное соблюдение этического кодекса.</p>
+          </div>
+          <div class="principle">
+            <h4>🌱 Личная терапия и развитие</h4>
+            <p>Я постоянно работаю над собой, прохожу супервизии и повышаю квалификацию.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <h2>Записаться на консультацию</h2>
+        <p>Напишите мне любым удобным способом. Я отвечаю в течение 24 часов. Первая встреча — знакомство, на котором мы обсудим запрос и формат работы.</p>
+        <div class="contact-links">
+          <a href="tel:+79655831356" class="contact-link">
+            <div class="icon">📞</div>            <div>
+              <div style="font-weight: 500;">Позвонить</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">+7 (965) 583-13-56</div>
+            </div>
+          </a>
+          <a href="https://t.me/ne_Nastya21" target="_blank" class="contact-link">
+            <div class="icon">✈️</div>
+            <div>
+              <div style="font-weight: 500;">Telegram</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">@ne_Nastya21</div>
+            </div>
+          </a>
+          <a href="mailto:narotik7hokage@gmail.com" class="contact-link">
+            <div class="icon">📧</div>
+            <div>
+              <div style="font-weight: 500;">Email</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">narotik7hokage@gmail.com</div>
+            </div>
+          </a>
+        </div>
+        <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">📍 Очно: г. Чистополь<br>🌐 Онлайн: Zoom, Telegram, Google Meet</p>
+      </div>
+      <form class="contact-form reveal" name="consultation" method="POST" data-netlify="true" id="bookingForm">
+        <input type="hidden" name="form-name" value="consultation">
+        <div class="form-group">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" required placeholder="Как к вам обращаться?">
+        </div>
+        <div class="form-group">
+          <label for="contact">Telegram или телефон</label>
+          <input type="text" id="contact" name="contact" required placeholder="@username или +7...">
+        </div>
+        <div class="form-group">
+          <label for="format">Удобный формат</label>
+          <select id="format" name="format">
+            <option>Онлайн (Zoom / Telegram)</option>
+            <option>Очно (Чистополь)</option>
+            <option>Пока не определился(-ась)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Кратко о запросе (по желанию)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Что вас беспокоит?"></textarea>
+        </div>
+        <div class="consent-group">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">Я даю согласие на обработку персональных данных в соответствии с 152-ФЗ</label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+      </form>    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">Алёна Спирихина</div>
+      <p class="footer-note">Психолог-консультант. Интегративный подход.<br>Не является медицинской услугой. При острых кризисных состояниях обращайтесь в службы экстренной помощи.</p>
+      <p class="copyright">© <span id="year"></span> Алёна Спирихина. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      const consent = document.getElementById('consent');
+      if (!consent.checked) {
+        e.preventDefault();
+        alert('Пожалуйста, подтвердите согласие на обработку данных');
+        return;
+      }
+      const btn = e.target.querySelector('button');
+      const originalText = btn.textContent;
+      btn.textContent = 'Заявка отправлена ✓';
+      btn.disabled = true;      setTimeout(() => {
+        e.target.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 2500);
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
